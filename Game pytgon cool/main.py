@@ -15,15 +15,20 @@ pg.display.set_caption("gamer game")
 #variables and images
 FPS = 60
 
+ 
 def worldGen():
-    map = gen(int(WIDTH/10), int(HEIGHT/10), random.randrange(0, 1000), 7)
+    worldDict = {}
+    map = gen(int(WIDTH/10), int(HEIGHT/10), random.randrange(0, 1000), 5)
     for i in range(0, int(HEIGHT/10)):
         for j in range(0, int(WIDTH/10)):
-            if map[i][j] > -0.02:
-                pg.draw.rect(WIN, (0, 0, 255 - abs(map[i][j])*100), [j*10, i*10, 10, 10], 0)
-
+            if map[i][j] > -0.07:
+                pg.draw.rect(WIN, (0, random.randrange(0, 25), 255 - abs(map[i][j])*200), [j*10, i*10, 10, 10], 0)
             else:
                 pg.draw.rect(WIN, (17, random.randrange(95, 102), 0), [j*10, i*10, 10, 10], 0)
+
+def zoomIn():
+    pass
+
 
 def highlight():
     posx, posy = pg.mouse.get_pos()
@@ -38,7 +43,6 @@ def main():
     worldGen()
 
     while run:
-        highlight()
 
         #gets list of keys down
         keys = pg.key.get_pressed()
@@ -65,3 +69,5 @@ if __name__ == "__main__":
 
 
 
+
+    
